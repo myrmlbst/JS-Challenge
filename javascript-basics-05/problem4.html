@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Problem 4</title>
+    </head>
+
+    <body>
+        <h2>Enter a number to calculate the sum of multiple of 3 and 5 between 1 and N:</h2>
+
+        <input type="number" id="numberInput" placeholder="Enter a number" />
+        <button onclick="calculateSum()">Calculate</button>
+
+        <p id="result"></p>
+
+        <script>
+            function calculateSum() {
+                const input = document.getElementById('numberInput').value;
+                const n = parseInt(input);
+                let resultElement = document.getElementById('result');
+
+                let sum = 0;
+                for (let i=1; i<=n; i++) {
+                  if (i%3 === 0 || i%5 === 0) {
+                    sum += i;
+                  }
+                }
+
+            resultElement.textContent = `The sum of numbers from 1 to ${n} that are multiples of 3 and 5 is: ${sum}`;
+          }
+        </script>
+    </body>
+</html>
