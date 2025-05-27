@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Problem 7</title>
+    </head>
+
+    <body>
+        <h2>Prime Numbers Between 2 and 30</h2>
+        <p id="primes"></p>
+
+        <script>
+            function isPrime(num) {
+                if (num<=1) return false;
+                for (let i=2; i<=Math.sqrt(num); i++) {
+                    if (num%i === 0) return false;
+                }
+                return true;
+            }
+
+            let primes = [];
+
+            for (let i=2; i<=30; i++) {
+                if (isPrime(i)) primes.push(i);
+            }
+
+            document.getElementById('primes').textContent = `Prime numbers between 2 and 30 are: ${primes.join(', ')}`;
+
+        </script>
+    </body>
+
+</html>
