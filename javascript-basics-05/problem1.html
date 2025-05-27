@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Problem 1</title>
+    </head>
+
+    <body>
+        <h1>Enter your name:</h1>
+        <input type="text" id="nameInput" placeholder="Your name" />
+        <button onclick="greetUser()">Continue</button>
+
+        <p id="greetingMessage"></p>
+
+        <script>
+          function greetUser() {
+            const name = document.getElementById('nameInput').value;
+            const greeting = name ? `Hello, ${name}!` : "Hello, stranger!";
+            document.getElementById('greetingMessage').textContent = greeting;
+          }
+        </script>
+
+    </body>
+</html>
