@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guessing Game</title>
+    </head>
+
+    <body>
+        <h2>Guess a number between 1 and 100</h2>
+
+        <input type="number" id="guessInput" placeholder="Enter your guess" min="1" max="100">
+        <button onclick="makeGuess()">Guess</button>
+
+        <p id="feedback"></p>
+        <p id="triesInfo"></p>
+        <p id="result"></p>
+
+        <script>
+          const secretNumber = Math.floor(Math.random() * 100) + 1;
+          let tries = 0;
+          const maxTries = 8;
+          let lastGuess = null;
+          let gameOver = false;
+
+          function makeGuess() {
+            if (gameOver) return;
+
+            const input = document.getElementById("guessInput");
+            const feedback = document.getElementById("feedback");
+            const triesInfo = document.getElementById("triesInfo");
+            const result = document.getElementById("result");
+
+            const guess = parseInt(input.value);
+
+            if (isNaN(guess) || guess < 1 || guess > 100) {
+              feedback.textContent = "Please enter a valid number between 1 and 100.";
+              return;
+            }
+
+            if (guess !== lastGuess) {
+              tries++;
+              lastGuess = guess;
+            }
+
+            if (guess === secretNumber) {
+              feedback.textContent = "Correct!";
+              result.textContent = `You guessed the number in ${tries} ${tries === 1 ? 'try' : 'tries'}.`;
+              endGame();
+            } else if (guess < secretNumber) { feedback.textContent = "Too small!"; }
+            else { feedback.textContent = "Too large!"; }
+
+            triesInfo.textContent = `Tries used: ${tries} / ${maxTries}`;
+
+            if (tries >= maxTries && guess !== secretNumber) {
+              result.textContent = `You've used all ${maxTries} tries. The number was ${secretNumber}.`;
+              endGame();
+            }
+          }
+
+          function endGame() {
+            document.getElementById("guessInput").disabled = true;
+            gameOver = true;
+          }
+        </script>
+    </body>
+</html>
