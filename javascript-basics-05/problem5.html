@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sum or Product Calculator</title>
+    </head>
+
+    <body>
+        <h2>Enter a number and choose an operation:</h2>
+
+        <input type="number" id="numberInput" placeholder="Enter a number" />
+        <br><br>
+        <label><input type="radio" name="operation" value="sum" checked>Sum</label>
+        <label><input type="radio" name="operation" value="product">Product</label>
+        <br><br>
+
+        <button onclick="calculate()">Compute</button>
+
+        <p id="result"></p>
+
+        <script>
+          function calculate() {
+            const n = parseInt(document.getElementById('numberInput').value);
+            const resultElement = document.getElementById('result');
+            const operation = document.querySelector('input[name="operation"]:checked').value;
+
+            let result;
+
+            if (operation === 'sum') {
+              result = 0;
+              for (let i=1; i<=n; i++) {
+                result+=i;
+              }
+              resultElement.textContent = `The sum from 1 to ${n} is: ${result}`;
+            } else {
+              result = 1;
+              for (let i=1; i<=n; i++) {
+                result *= i;
+              }
+              resultElement.textContent = `The product from 1 to ${n} is: ${result}`;
+            }
+          }
+        </script>
+    </body>
+</html>
